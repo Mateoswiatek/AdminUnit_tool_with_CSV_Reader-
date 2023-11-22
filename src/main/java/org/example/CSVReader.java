@@ -21,7 +21,7 @@ import java.util.Map;
  * Domyślna konfiguracja - nie zamienia wartości których nie ma
  * Jeśli user nie wybrał zamieniania brakujących wartości:
  *      - Liczbowe - Exceptions
- *      - String - pusty string ""
+ *      - String - pusty string "" cos tam
  *
  */
 public class CSVReader {
