@@ -18,6 +18,7 @@ public class Main {
         System.out.println(testowy.getTime());
         System.out.println(testowy.getLocalDate());
         System.out.println(testowy.getLocalDataTime());
+        System.out.println(CSVReader.getDefaultParameters());
 
     }
 }

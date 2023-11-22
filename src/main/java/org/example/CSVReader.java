@@ -224,7 +224,7 @@ public class CSVReader {
      * @param format format w jakim ma się wyświetlić czas
      * @return String
      */
-    public String getTime(String format){
+    static public String getTime(String format){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format);
         return LocalTime.now().format(formatter); // .truncatedTo(java.time.temporal.ChronoUnit.SECONDS)
     }
@@ -243,7 +243,7 @@ public class CSVReader {
      * @param format format zapisu
      * @return String
      */
-    public String getLocalDate(String format){
+    static public String getLocalDate(String format){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format);
         return LocalDate.now().format(formatter);
     }
@@ -262,7 +262,7 @@ public class CSVReader {
      * @param format Daty i Czasu
      * @return String
      */
-    public String getLocalDataTime(String format){
+    static public String getLocalDataTime(String format){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format);
         return LocalDateTime.now().format(formatter);
     }
@@ -292,7 +292,18 @@ public class CSVReader {
         this.charset_name = charset;
     }
 
-
+    static public String getDefaultParameters(){
+            return "DEFAULT_STRING: = " + DEFAULT_REPLACING
+                    +"\nDEFAULT_DELIMITER: " + DEFAULT_DELIMITER
+                    + "\nDEFAULT_NUMBER: " + DEFAULT_NUMBER
+                    + "\nDEFAULT_STRING (between ##): #" + DEFAULT_STRING + "#"
+                    + "\nDEFAULT_DELIMITER: " + DEFAULT_DELIMITER
+                    + "\nDEFAULT_HEADER: "  + DEFAULT_HEADER
+                    + "\nDEFAULT_CHARSET_NAME: " + DEFAULT_CHARSET_NAME
+                    + "\nDEFAULT_DATA_FORMATTER: " + DEFAULT_DATA_FORMATTER
+                    + "\nDEFAULT_TIME_FORMATTER: " + DEFAULT_TIME_FORMATTER
+                    + "\nDEFAULT_DATA_TIME_FORMATTER: " + DEFAULT_DATA_TIME_FORMATTER;
+    }
 
 
     /*
