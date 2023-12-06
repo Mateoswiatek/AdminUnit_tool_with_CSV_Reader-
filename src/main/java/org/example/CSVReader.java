@@ -61,24 +61,28 @@ public class CSVReader {
      * @throws IOException
      */
 
-    public CSVReader(String filename, String delimiter, boolean hasHeader, boolean replacing, int default_number, String default_string) throws IOException {
-        reader = new BufferedReader(new FileReader(filename, Charset.forName(charset_name)));
-        this.delimiter = delimiter;
-        this.hasHeader = hasHeader;
-        if(hasHeader) parseHeader();
-        this.replacing = replacing;
-        this.default_number = default_number;
-        this.default_string = default_string;
+    public CSVReader(String filename, String delimiter, boolean hasHeader, boolean replacing, int default_number, String default_string) {
+        try {
+            reader = new BufferedReader(new FileReader(filename, Charset.forName(charset_name)));
+            this.delimiter = delimiter;
+            this.hasHeader = hasHeader;
+            if (hasHeader) parseHeader();
+            this.replacing = replacing;
+            this.default_number = default_number;
+            this.default_string = default_string;
+        } catch (IOException e){
+            System.err.println("IOException: " +  e);
+        }
     }
-    public CSVReader(String filename,String delimiter,boolean hasHeader) throws IOException {
+    public CSVReader(String filename,String delimiter,boolean hasHeader) {
         this(filename, delimiter, hasHeader, DEFAULT_REPLACING, DEFAULT_NUMBER, DEFAULT_STRING);
     }
 
-    public CSVReader(String filename) throws IOException {
+    public CSVReader(String filename) {
         this(filename, DEFAULT_DELIMITER, DEFAULT_HEADER);
     }
 
-    public CSVReader(Reader reader, String delimiter, boolean hasHeader, boolean replacing, int default_number, String default_string) throws IOException {
+    public CSVReader(Reader reader, String delimiter, boolean hasHeader, boolean replacing, int default_number, String default_string) {
         this.reader = new BufferedReader(reader);
         this.delimiter = delimiter;
         this.hasHeader = hasHeader;
@@ -87,24 +91,31 @@ public class CSVReader {
         this.default_number = default_number;
         this.default_string = default_string;
     }
-    public CSVReader(Reader reader, String delimiter, boolean hasHeader) throws IOException {
+    public CSVReader(Reader reader, String delimiter, boolean hasHeader) {
         this(reader, delimiter, hasHeader, DEFAULT_REPLACING, DEFAULT_NUMBER, DEFAULT_STRING);
     }
 
-    void parseHeader() throws IOException {
-        // wczytaj wiersz
-        String line  = reader.readLine();
-        if(line==null){
-            return;
+    public void parseHeader() {
+        try {
+            // wczytaj wiersz
+            String line = reader.readLine();
+            if (line == null) {
+                return;
+            }
+            // podziel na pola
+            String []header = line.split(delimiter);
+            // przetwarzaj dane w wierszu
+            for(int i=0;i<header.length;i++){
+                String str = header[i];
+                columnLabels.add(str);
+                columnLabelsToInt.put(str, i);
+            }
+        } catch(IOException e){
+            System.err.println("IOException: " + e);
         }
-        // podziel na pola
-        String []header = line.split(delimiter);
-        // przetwarzaj dane w wierszu
-        for(int i=0;i<header.length;i++){
-            String str = header[i];
-            columnLabels.add(str);
-            columnLabelsToInt.put(str, i);
-        }
+    }
+    public String getHeader(){
+        return columnLabels.toString();
     }
 
     /**
@@ -112,12 +123,17 @@ public class CSVReader {
      * @return czy udało się odczytać
      * @throws IOException
      */
-    boolean next() throws IOException {
-        String line = reader.readLine();
-        if(null == line) return false;
-        current = line.split(delimiter);
-        records.add(current);
-        return true;
+    public boolean next() {
+        try {
+            String line = reader.readLine();
+            if (null == line) return false;
+            current = line.split(delimiter);
+            records.add(current);
+            return true;
+        } catch (IOException e){
+            System.err.println("IOException: " + e);
+            return false;
+        }
     }
 
     /**

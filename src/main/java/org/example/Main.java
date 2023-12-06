@@ -1,9 +1,11 @@
 package org.example;
+import admin_units.AdminUnitList;
+
 import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-
+/*
         CSVReader reader = new CSVReader("src/with-header.csv",";",true);
         reader.next();
         System.out.println(reader.getInt(0));
@@ -19,6 +21,10 @@ public class Main {
         System.out.println(testowy.getLocalDate());
         System.out.println(testowy.getLocalDataTime());
         System.out.println(CSVReader.getDefaultParameters());
+        */
+
+        AdminUnitList adminUnitList = new AdminUnitList();
+        adminUnitList.read("src/admin-units.csv");
 
     }
 }
