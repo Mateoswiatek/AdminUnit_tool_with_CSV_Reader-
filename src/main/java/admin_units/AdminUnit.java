@@ -23,13 +23,12 @@ public class AdminUnit {
                 "}\n";
     }
 
-    public AdminUnit(String name, int adminLevel, double population, double area, double density, AdminUnit parent, BoundingBox bbox) {
+    public AdminUnit(String name, int adminLevel, double population, double area, double density, BoundingBox bbox) {
         this.name = name;
         this.adminLevel = adminLevel;
         this.population = population;
         this.area = area;
         this.density = density;
-        this.parent = parent;
         this.bbox = bbox;
     }
 

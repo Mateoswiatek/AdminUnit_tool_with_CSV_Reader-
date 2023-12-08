@@ -25,9 +25,9 @@ import java.util.Map;
  *
  */
 public class CSVReader {
-    static final boolean DEFAULT_REPLACING = false;
+    static final boolean DEFAULT_REPLACING = true;
     static final int DEFAULT_NUMBER = 0;
-    static final String DEFAULT_STRING = "";
+    static final String DEFAULT_STRING = "#";
     static final String DEFAULT_DELIMITER = ";";
     static final boolean DEFAULT_HEADER = true;
     static final String DEFAULT_TIME_FORMATTER = "HH:mm:ss.SSS";
@@ -76,6 +76,10 @@ public class CSVReader {
     }
     public CSVReader(String filename,String delimiter,boolean hasHeader) {
         this(filename, delimiter, hasHeader, DEFAULT_REPLACING, DEFAULT_NUMBER, DEFAULT_STRING);
+    }
+
+    public CSVReader(String filename, String delimiter) {
+        this(filename, delimiter, DEFAULT_HEADER);
     }
 
     public CSVReader(String filename) {
@@ -213,8 +217,8 @@ public class CSVReader {
         try{
             x = current[index].isBlank(); // isBlank - zwraca true jesli sa tylko biale znaki.
         } catch(ArrayIndexOutOfBoundsException e){
-            x = false;
-            System.out.println("Poza zakresem ale działa e=" + e);
+            x = true; // bo brakuje
+            System.out.println("Poza zakresem najpewniej brakuje więcej wartosci e=" + e);
         }
         return x;
     }
