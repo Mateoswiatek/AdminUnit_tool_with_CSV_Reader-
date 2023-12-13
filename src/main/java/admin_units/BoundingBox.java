@@ -62,26 +62,26 @@ public class BoundingBox {
     }
     @Override
     public boolean equals(Object o){
-        return switch(o){
-            case BoundingBox bo -> bo.xmin == xmin && bo.xmax == xmax && bo.ymax == ymin && bo.ymin == ymin;
-            default -> false;
-        };
+        if(o instanceof BoundingBox bo){
+            return bo.xmin == xmin && bo.xmax == xmax && bo.ymax == ymin && bo.ymin == ymin;
+        }
+        return false;
     }
     double getCenterX(){
         if(isEmpty()){
-            throw new NullPointerException("Empty box");
+            throw new NullPointerException("Empty box X");
         }
         return (xmin + xmax) / 2;
     }
     double getCenterY(){
         if(isEmpty()){
-            throw new NullPointerException("Empty box");
+            throw new NullPointerException("Empty box Y");
         }
         return (ymin + ymax) / 2;
     }
     double distanceTo(BoundingBox bbx){
         if(isEmpty()){
-            throw new RuntimeException("Not implemented");
+            throw new NullPointerException("Empty box");
         }
         return Haversine.haversine(getCenterX(), getCenterY(), bbx.getCenterX(), bbx.getCenterY());
     }
