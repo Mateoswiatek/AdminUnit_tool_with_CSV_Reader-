@@ -218,7 +218,7 @@ public class CSVReader {
             x = current[index].isBlank(); // isBlank - zwraca true jesli sa tylko biale znaki.
         } catch(ArrayIndexOutOfBoundsException e){
             x = true; // bo brakuje
-            System.out.println("Poza zakresem najpewniej brakuje więcej wartosci e=" + e);
+            // System.out.println("Poza zakresem najpewniej brakuje więcej wartosci e=" + e);
         }
         return x;
     }

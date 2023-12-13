@@ -1,6 +1,7 @@
 package admin_units;
 
 public class AdminUnit {
+    long id;
     String name;
     int adminLevel;
     double population;
@@ -8,7 +9,7 @@ public class AdminUnit {
     double density;
     AdminUnit parent;
     // AdminUnit children;
-    BoundingBox bbox = new BoundingBox();
+    BoundingBox bbox;
 
     @Override
     public String toString() {
@@ -18,12 +19,13 @@ public class AdminUnit {
                 "\n population=" + population +
                 "\n area=" + area +
                 "\n density=" + density +
-                "\n parent=" + parent +
+                "\n parent id=" + parent.id +
                 "\n bbox=" + bbox +
                 "}\n";
     }
 
-    public AdminUnit(String name, int adminLevel, double population, double area, double density, BoundingBox bbox) {
+    public AdminUnit(long id, String name, int adminLevel, double population, double area, double density, BoundingBox bbox) {
+        this.id = id;
         this.name = name;
         this.adminLevel = adminLevel;
         this.population = population;
