@@ -32,7 +32,7 @@ public class AdminUnitList {
                 lx.add(csvReader.getDouble("x" + i));
             }
             for(int i = 1; i<=5; i++){
-                ly.add(csvReader.getDouble("x" + i));
+                ly.add(csvReader.getDouble("y" + i));
             }
             AdminUnit unit = new AdminUnit(
                     csvReader.getLong("id"),

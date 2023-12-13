@@ -4,14 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b3d50278-b05d-4369-b60a-ff676b13668f" name="Changes" comment="redundant streams replaced by regular forEach">
+    <list default="true" id="b3d50278-b05d-4369-b60a-ff676b13668f" name="Changes" comment="add children to Unit and printing children.">
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/b/0ba1b9c7a4878802f938e331cc2d8a042087ec6b" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/b/0ba1b9c7a4878802f938e331cc2d8a042087ec6b" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/admin_units/AdminUnit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/admin_units/AdminUnit.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/admin_units/AdminUnitList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/admin_units/AdminUnitList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/admin_units/AdminUnitListTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/admin_units/AdminUnitListTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/admin_units/BoundingBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/admin_units/BoundingBox.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -198,7 +197,7 @@
       <workItem from="1701878114460" duration="4920000" />
       <workItem from="1702076840881" duration="42000" />
       <workItem from="1702463946418" duration="5015000" />
-      <workItem from="1702471541626" duration="8230000" />
+      <workItem from="1702471541626" duration="11046000" />
     </task>
     <task id="LOCAL-00001" summary="CSV Reader">
       <option name="closed" value="true" />
@@ -272,7 +271,15 @@
       <option name="project" value="LOCAL" />
       <updated>1702479243235</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="add children to Unit and printing children.">
+      <option name="closed" value="true" />
+      <created>1702479880246</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1702479880246</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -286,7 +293,8 @@
     <MESSAGE value="bugfix with units stream and toString method in AdminUnit.java" />
     <MESSAGE value="fixMissingValues and bugfix parent&#10;(first set all parents, after fixMissingValues)" />
     <MESSAGE value="redundant streams replaced by regular forEach" />
-    <option name="LAST_COMMIT_MESSAGE" value="redundant streams replaced by regular forEach" />
+    <MESSAGE value="add children to Unit and printing children." />
+    <option name="LAST_COMMIT_MESSAGE" value="add children to Unit and printing children." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
