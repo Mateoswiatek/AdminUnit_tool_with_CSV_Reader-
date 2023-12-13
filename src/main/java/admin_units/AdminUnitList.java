@@ -24,7 +24,7 @@ public class AdminUnitList {
     public void read(String filename) {
         CSVReader csvReader = new CSVReader(filename, ",");
         System.out.println(csvReader.getHeader());
-        Map<AdminUnit, Long> uniToParentIndex = new HashMap<>();
+        Map<AdminUnit, Long> unitToParentIndex = new HashMap<>();
         Map<Long, AdminUnit> indexToUnit = new HashMap<>();
 
         while(csvReader.next()){
@@ -50,26 +50,40 @@ public class AdminUnitList {
                             Collections.max(ly)
                     ));
 
-            uniToParentIndex.put(unit, csvReader.getLong("parent"));
+            unitToParentIndex.put(unit, csvReader.getLong("parent"));
             indexToUnit.put(unit.id, unit);
             units.add(unit);
         }
-//        System.out.println("rozmiar: " + units.size());
+
         // mapowanie <Zachodniopomorskie, 2>; łączymy zachodniopomorsie z 2. że unit o inexie 2 jest rodzicem zachodniopomorskiego
         // dodajemy rówineż listę zapisującą <id, wojewodztwo>,
         // następnie dla każdego unitu bierzemy index jego rodzica, i szukamy unita do którego ten index jest przypisany.
         // nie bierzemy tych którzy nie mają rodziców.
 
-        units = units.stream()
-                .peek(unit -> unit.parent = indexToUnit.get(uniToParentIndex.get(unit)))
-                .collect(Collectors.toList());
+
+        units.forEach(unit -> unit.parent = indexToUnit.get(unitToParentIndex.get(unit))); // old version units = units.stream().peek(unit -> unit.parent = indexToUnit.get(unitToParentIndex.get(unit))).collect(Collectors.toList());
         // Na dwa, bo najpierw wszyscy rodzice muszą być uzupełnieni, a dopiero potem mozna fixowac
-        units = units.stream().peek(AdminUnit::fixMissingValues).collect(Collectors.toList()); // fix population and desity
+        // for each unit fix population and desity
 
+        units.forEach(AdminUnit::fixMissingValues); //units = units.stream().peek().collect(Collectors.toList());
 
-        //units.stream().filter(unit -> unit.parent == null).forEach(System.out::println);
+        // units.stream().filter(unit -> unit.parent == null).forEach(System.out::println);
         units.stream().filter(unit -> 0 == unit.density).forEach(System.out::println);
-//        System.out.println("rozmiar 2 : " + units.size());
+        // System.out.println("rozmiar 2 : " + units.size());
+
+
+
+/*
+        units = units.stream()
+                .peek(unit -> {
+                    for (Map.Entry<AdminUnit, Long> entry : unitToParentIndex.entrySet()) {
+                        if (entry.getValue().equals(unit.id)) {
+                            unit.children.add(entry.getKey());
+                        }
+                    }
+                }).collect(Collectors.toList());
+*/
+
     }
     public void list(PrintStream out){
         units.forEach(out::println);
