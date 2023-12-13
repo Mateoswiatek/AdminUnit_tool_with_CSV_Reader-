@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class AdminUnitListTest {
     AdminUnitList adminUnitList = new AdminUnitList();
-    @BeforeEach
+//    @BeforeEach
     void init(){
         adminUnitList.read("src/admin-units.csv");
     }
@@ -15,8 +15,8 @@ class AdminUnitListTest {
     @Test
     void read() {
         adminUnitList.read("src/admin-units.csv");
-        System.out.println(adminUnitList.units.size());
-        adminUnitList.list(10);
+//        System.out.println(adminUnitList.units.size());
+        adminUnitList.list(20);
     }
 
     @Test

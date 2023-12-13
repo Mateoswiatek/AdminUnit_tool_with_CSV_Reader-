@@ -49,25 +49,21 @@ public class AdminUnitList {
                             Collections.max(lx),
                             Collections.max(ly)
                     ));
-            long idParent = csvReader.getLong("parent");
-            if(0 == idParent){
-                unit.parent = null;
-            } else {
-                uniToParentIndex.put(unit, idParent);
-            }
 
+            uniToParentIndex.put(unit, csvReader.getLong("parent"));
             indexToUnit.put(unit.id, unit);
             units.add(unit);
         }
+//        System.out.println("rozmiar: " + units.size());
         // mapowanie <Zachodniopomorskie, 2>; łączymy zachodniopomorsie z 2. że unit o inexie 2 jest rodzicem zachodniopomorskiego
         // dodajemy rówineż listę zapisującą <id, wojewodztwo>,
         // następnie dla każdego unitu bierzemy index jego rodzica, i szukamy unita do którego ten index jest przypisany.
         // nie bierzemy tych którzy nie mają rodziców.
-        units = units.stream()
-                .filter(unit -> unit.parent != null)
-                .map(unit -> unit.parent = indexToUnit.get(uniToParentIndex.get(unit)))
-                .collect(Collectors.toList());
 
+        units = units.stream()
+                .peek(unit -> unit.parent = indexToUnit.get(uniToParentIndex.get(unit)))
+                .collect(Collectors.toList());
+//        System.out.println("rozmiar 2 : " + units.size());
     }
     public void list(PrintStream out){
         units.stream()

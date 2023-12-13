@@ -13,13 +13,19 @@ public class AdminUnit {
 
     @Override
     public String toString() {
+        String parentId;
+        if(parent == null){
+            parentId = "none";
+        } else{
+            parentId = String.valueOf(parent.id);
+        }
         return "AdminUnit{" +
                 "\n name='" + name + '\'' +
                 "\n adminLevel=" + adminLevel +
                 "\n population=" + population +
                 "\n area=" + area +
                 "\n density=" + density +
-                "\n parent id=" + parent.id +
+                "\n parent id=" + parentId +
                 "\n bbox=" + bbox +
                 "}\n";
     }

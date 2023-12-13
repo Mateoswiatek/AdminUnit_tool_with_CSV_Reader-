@@ -4,15 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b3d50278-b05d-4369-b60a-ff676b13668f" name="Changes" comment="add adminUnits task, read header">
-      <change afterPath="$PROJECT_DIR$/test/admin_units/AdminUnitListTest.java" afterDir="false" />
+    <list default="true" id="b3d50278-b05d-4369-b60a-ff676b13668f" name="Changes" comment="add readUnits with parents">
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/b/0ba1b9c7a4878802f938e331cc2d8a042087ec6b" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/b/0ba1b9c7a4878802f938e331cc2d8a042087ec6b" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/admin_units/AdminUnit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/admin_units/AdminUnit.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/admin_units/AdminUnitList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/admin_units/AdminUnitList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/CSVReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/CSVReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/admin_units/AdminUnitListTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/admin_units/AdminUnitListTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -199,7 +198,7 @@
       <workItem from="1701878114460" duration="4920000" />
       <workItem from="1702076840881" duration="42000" />
       <workItem from="1702463946418" duration="5015000" />
-      <workItem from="1702471541626" duration="3467000" />
+      <workItem from="1702471541626" duration="5387000" />
     </task>
     <task id="LOCAL-00001" summary="CSV Reader">
       <option name="closed" value="true" />
@@ -241,7 +240,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701880545079</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="add readUnits with parents">
+      <option name="closed" value="true" />
+      <created>1702475097084</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1702475097084</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -251,7 +258,8 @@
     <MESSAGE value="CSV Reader" />
     <MESSAGE value="add Static metod" />
     <MESSAGE value="add adminUnits task, read header" />
-    <option name="LAST_COMMIT_MESSAGE" value="add adminUnits task, read header" />
+    <MESSAGE value="add readUnits with parents" />
+    <option name="LAST_COMMIT_MESSAGE" value="add readUnits with parents" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
