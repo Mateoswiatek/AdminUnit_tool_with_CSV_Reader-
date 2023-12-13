@@ -4,8 +4,6 @@ import org.example.CSVReader;
 
 import java.io.PrintStream;
 import java.util.*;
-import java.util.stream.Collectors;
-
 
 public class AdminUnitList {
     List<AdminUnit> units;
@@ -60,30 +58,23 @@ public class AdminUnitList {
         // następnie dla każdego unitu bierzemy index jego rodzica, i szukamy unita do którego ten index jest przypisany.
         // nie bierzemy tych którzy nie mają rodziców.
 
-
         units.forEach(unit -> unit.parent = indexToUnit.get(unitToParentIndex.get(unit))); // old version units = units.stream().peek(unit -> unit.parent = indexToUnit.get(unitToParentIndex.get(unit))).collect(Collectors.toList());
         // Na dwa, bo najpierw wszyscy rodzice muszą być uzupełnieni, a dopiero potem mozna fixowac
         // for each unit fix population and desity
 
         units.forEach(AdminUnit::fixMissingValues); //units = units.stream().peek().collect(Collectors.toList());
 
-        // units.stream().filter(unit -> unit.parent == null).forEach(System.out::println);
-        units.stream().filter(unit -> 0 == unit.density).forEach(System.out::println);
-        // System.out.println("rozmiar 2 : " + units.size());
+        units.stream().filter(unit -> 0 == unit.density).forEach(System.out::println); // units.stream().filter(unit -> unit.parent == null).forEach(System.out::println);
 
-
-
-/*
-        units = units.stream()
-                .peek(unit -> {
-                    for (Map.Entry<AdminUnit, Long> entry : unitToParentIndex.entrySet()) {
-                        if (entry.getValue().equals(unit.id)) {
-                            unit.children.add(entry.getKey());
-                        }
-                    }
-                }).collect(Collectors.toList());
-*/
-
+        // dodawanie dzieci, przeszukujemy unitToParentIndex. wybieramy wszystkie klucze które jako wartość mają dany index.
+        // dodajemy klucz (czyli nasz AdminUnit) do listy dzieci danego Unita.
+        units.forEach(unit -> {
+            for (Map.Entry<AdminUnit, Long> entry : unitToParentIndex.entrySet()) {
+                if (entry.getValue().equals(unit.id)) {
+                    unit.children.add(entry.getKey());
+                }
+            }
+        });
     }
     public void list(PrintStream out){
         units.forEach(out::println);

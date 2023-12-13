@@ -1,5 +1,8 @@
 package admin_units;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class AdminUnit {
     long id;
     String name;
@@ -8,7 +11,7 @@ public class AdminUnit {
     double area;
     double density;
     AdminUnit parent;
-    // AdminUnit children;
+    List<AdminUnit> children = new ArrayList<>();
     BoundingBox bbox;
 
     @Override
@@ -25,10 +28,11 @@ public class AdminUnit {
                 "\n population=" + population +
                 "\n area=" + area +
                 "\n density=" + density +
+                "\n bbox=" + bbox +
                 "\n this   id= " + id +
                 "\n parent id= " + parentId +
-                "\n bbox=" + bbox +
-                "}\n";
+                "\n childrens = " + children.toString() +
+                "}\n\n\n";
     }
 
     public AdminUnit(long id, String name, int adminLevel, double population, double area, double density, BoundingBox bbox) {
