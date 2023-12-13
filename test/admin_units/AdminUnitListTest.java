@@ -7,7 +7,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class AdminUnitListTest {
     AdminUnitList adminUnitList = new AdminUnitList();
-//    @BeforeEach
+    @BeforeEach
+    @Test
     void init(){
         adminUnitList.read("src/admin-units.csv");
     }
@@ -15,13 +16,13 @@ class AdminUnitListTest {
     @Test
     void read() {
         adminUnitList.read("src/admin-units.csv");
-//        System.out.println(adminUnitList.units.size());
-        adminUnitList.list(20);
+        System.out.println(adminUnitList.units.size());
+        adminUnitList.list(System.out);
     }
 
     @Test
     void list() {
-        adminUnitList.list(System.out, 0, 2);
+        adminUnitList.list(System.out, 2, 2);
     }
 
     @Test
@@ -31,7 +32,7 @@ class AdminUnitListTest {
 
     @Test
     void testListLimit() {
-        adminUnitList.list(20);
+        adminUnitList.list(200);
     }
 
     @Test
@@ -39,8 +40,25 @@ class AdminUnitListTest {
         adminUnitList.selectByName("Południowa", false).list(10);
     }
 
+
+    @Test
+    void testShortSelectByNameRegex() {
+        //znaleźć wybraną jednostkę na danym poziomie hierarchii
+        adminUnitList.selectByName("Kraków", true).list(System.out);
+        adminUnitList.selectByName("Kraków").list(System.out);
+    }
     @Test
     void testShortSelectByName() {
-        adminUnitList.selectByName("Południowa", false).list(10);
+        adminUnitList.selectByName("Kraków", false).list(System.out);
     }
+
+    @Test
+    void testGetNeighbors(){
+        //wyznaczyć i wypisać listę sąsiadów ->
+        // dla Kolonia Wschodnia -> Kolonia Wschodnia, Kolonia Zachodnia, Kolonia Południowa
+
+        //adminUnitList.getNeighbors(adminUnitList.selectByName("Bębło").units.get(0), 150000);
+        adminUnitList.getNeighbors(adminUnitList.selectByName("Kolonia Wschodnia").units.get(0), 150000).list(System.out);
+    }
+
 }

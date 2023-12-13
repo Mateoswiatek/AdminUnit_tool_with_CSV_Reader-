@@ -4,6 +4,7 @@ import org.example.CSVReader;
 
 import java.io.PrintStream;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class AdminUnitList {
     List<AdminUnit> units;
@@ -11,7 +12,8 @@ public class AdminUnitList {
         this.units = new ArrayList<>();
     }
     public AdminUnitList(List<AdminUnit> list){
-        this.units = new ArrayList<>(list);
+        this.units = list;
+        //this.units = new ArrayList<>(list); // można ???
     }
     /**
      * Czyta rekordy pliku i dodaje do listy
@@ -82,13 +84,6 @@ public class AdminUnitList {
         list(System.out, 0, limit);
     }
     public AdminUnitList selectByName(String pattern, boolean regex) {
-        /*AdminUnitList adminUnitList = new AdminUnitList();
-        adminUnitList.units.addAll(units.stream()
-                .filter(u -> regex ? u.name.matches(pattern) : u.name.contains(pattern))
-                .toList());
-
-
-         */
         /*
         for(AdminUnit unit : units){
             String u = unit.name.toString();
@@ -104,20 +99,26 @@ public class AdminUnitList {
         }
         */
 
-        //adminUnitList.list(System.out);
-
-        //return adminUnitList;
-
         return new AdminUnitList(units.stream()
                 .filter(u -> regex ? u.name.matches(pattern) : u.name.contains(pattern))
                 .toList());
     }
     public AdminUnitList selectByName(String pattern) {
-        return selectByName(pattern, false);
+        return selectByName(pattern, true);
     }
+
     AdminUnitList getNeighbors(AdminUnit unit, double maxdistance){
-        AdminUnitList adminUnitList = new AdminUnitList();
-        throw new RuntimeException("Not implemented");
+
+        // 4 województw, 6 powiatów i 7 gmin
+        return new AdminUnitList(switch(unit.adminLevel){
+            case 4, 6, 7 -> unit.parent.children.stream()
+                    .filter(u -> u.bbox.intersects(unit.parent.bbox)).collect(Collectors.toList());
+            default -> unit.parent.children.stream()
+                    .filter(u -> {
+                        System.out.println(u.bbox.distanceTo(unit.bbox));
+                        return u.bbox.distanceTo(unit.bbox) < maxdistance && u.bbox.distanceTo(unit.bbox) != 0.0;
+                    }).collect(Collectors.toList());
+        });
     }
 
 }
