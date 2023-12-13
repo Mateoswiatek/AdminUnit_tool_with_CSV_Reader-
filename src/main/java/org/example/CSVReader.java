@@ -49,7 +49,7 @@ public class CSVReader {
     int default_number;
     String default_string;
     List<String> columnLabels = new ArrayList<>();
-    Map<String,Integer> columnLabelsToInt = new HashMap<>();
+    public Map<String,Integer> columnLabelsToInt = new HashMap<>();
 
     /**
      * @param filename - nazwa pliku

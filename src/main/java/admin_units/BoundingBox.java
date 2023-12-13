@@ -14,11 +14,9 @@ public class BoundingBox {
         this.ymax = ymax;
         empty = false;
     }
-    public BoundingBox(){
-        this(0.0, 0.0, 0.0, 0.0);
-    }
+    public BoundingBox(){}
     public void addPoint(double x, double y){
-        if(isEmpty()){ xmin = xmax = x; ymin = ymax = y; empty = false;}
+        if(isEmpty()){ xmin = xmax = x; ymin = ymax = y; }
         else{
             if(x < xmin){
                 xmin = x;

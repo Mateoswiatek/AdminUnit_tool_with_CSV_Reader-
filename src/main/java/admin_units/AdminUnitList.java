@@ -22,18 +22,18 @@ public class AdminUnitList {
     public void read(String filename) {
         CSVReader csvReader = new CSVReader(filename, ",");
         System.out.println(csvReader.getHeader());
+        System.out.println(csvReader.columnLabelsToInt);
         Map<AdminUnit, Long> unitToParentIndex = new HashMap<>();
         Map<Long, AdminUnit> indexToUnit = new HashMap<>();
 
         while(csvReader.next()){
-            List<Double> lx = new ArrayList<>();
-            List<Double> ly = new ArrayList<>();
-            for(int i = 1; i<=5; i++){ // 1 to 4
-                lx.add(csvReader.getDouble("x" + i));
+            BoundingBox box = new BoundingBox();
+            for(int i = 7; i <16; i+=2){
+//                System.out.println(i);
+//                System.out.println(i+1);
+                box.addPoint(csvReader.getDouble(i), csvReader.getDouble(i+1));
             }
-            for(int i = 1; i<=5; i++){
-                ly.add(csvReader.getDouble("y" + i));
-            }
+
             AdminUnit unit = new AdminUnit(
                     csvReader.getLong("id"),
                     csvReader.getString("name"),
@@ -41,12 +41,7 @@ public class AdminUnitList {
                     csvReader.getDouble("population"),
                     csvReader.getDouble("area"),
                     csvReader.getDouble("density"),
-                    new BoundingBox(
-                            Collections.min(lx),
-                            Collections.min(ly),
-                            Collections.max(lx),
-                            Collections.max(ly)
-                    ));
+                    box);
 
             unitToParentIndex.put(unit, csvReader.getLong("parent"));
             indexToUnit.put(unit.id, unit);
