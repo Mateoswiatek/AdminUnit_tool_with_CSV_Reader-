@@ -63,11 +63,16 @@ public class AdminUnitList {
         units = units.stream()
                 .peek(unit -> unit.parent = indexToUnit.get(uniToParentIndex.get(unit)))
                 .collect(Collectors.toList());
+        // Na dwa, bo najpierw wszyscy rodzice muszą być uzupełnieni, a dopiero potem mozna fixowac
+        units = units.stream().peek(AdminUnit::fixMissingValues).collect(Collectors.toList()); // fix population and desity
+
+
+        //units.stream().filter(unit -> unit.parent == null).forEach(System.out::println);
+        units.stream().filter(unit -> 0 == unit.density).forEach(System.out::println);
 //        System.out.println("rozmiar 2 : " + units.size());
     }
     public void list(PrintStream out){
-        units.stream()
-                .forEach(out::println);
+        units.forEach(out::println);
     }
 
     public void list(PrintStream out,int offset, int limit ){

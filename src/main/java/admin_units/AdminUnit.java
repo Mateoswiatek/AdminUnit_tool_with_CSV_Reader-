@@ -25,7 +25,8 @@ public class AdminUnit {
                 "\n population=" + population +
                 "\n area=" + area +
                 "\n density=" + density +
-                "\n parent id=" + parentId +
+                "\n this   id= " + id +
+                "\n parent id= " + parentId +
                 "\n bbox=" + bbox +
                 "}\n";
     }
@@ -39,6 +40,18 @@ public class AdminUnit {
         this.density = density;
         this.bbox = bbox;
     }
+    public void fixMissingValues(){
+        if(0 == density){
+            if(null != parent){
+                parent.fixMissingValues();
+                density = parent.density;
+            } else {
+                density = 0;
+            }
+            population = area * density;
+        }
+    }
+
 
 }
 

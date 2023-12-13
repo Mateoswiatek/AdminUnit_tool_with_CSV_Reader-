@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b3d50278-b05d-4369-b60a-ff676b13668f" name="Changes" comment="add readUnits with parents">
+    <list default="true" id="b3d50278-b05d-4369-b60a-ff676b13668f" name="Changes" comment="bugfix with units stream and toString method in AdminUnit.java">
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/b/0ba1b9c7a4878802f938e331cc2d8a042087ec6b" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/b/0ba1b9c7a4878802f938e331cc2d8a042087ec6b" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
@@ -198,7 +198,7 @@
       <workItem from="1701878114460" duration="4920000" />
       <workItem from="1702076840881" duration="42000" />
       <workItem from="1702463946418" duration="5015000" />
-      <workItem from="1702471541626" duration="5387000" />
+      <workItem from="1702471541626" duration="6868000" />
     </task>
     <task id="LOCAL-00001" summary="CSV Reader">
       <option name="closed" value="true" />
@@ -248,7 +248,15 @@
       <option name="project" value="LOCAL" />
       <updated>1702475097084</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="bugfix with units stream and toString method in AdminUnit.java">
+      <option name="closed" value="true" />
+      <created>1702476975724</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1702476975724</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -259,7 +267,8 @@
     <MESSAGE value="add Static metod" />
     <MESSAGE value="add adminUnits task, read header" />
     <MESSAGE value="add readUnits with parents" />
-    <option name="LAST_COMMIT_MESSAGE" value="add readUnits with parents" />
+    <MESSAGE value="bugfix with units stream and toString method in AdminUnit.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="bugfix with units stream and toString method in AdminUnit.java" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -272,14 +281,10 @@
           <properties class="java.lang.NumberFormatException" package="java.lang" />
           <option name="timeStamp" value="2" />
         </breakpoint>
-        <breakpoint enabled="true" type="java-exception">
-          <properties class="java.lang.ArrayIndexOutOfBoundsException" package="java.lang" />
-          <option name="timeStamp" value="3" />
-        </breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/CSVReader.java</url>
-          <line>220</line>
-          <option name="timeStamp" value="4" />
+          <url>file://$PROJECT_DIR$/src/main/java/admin_units/AdminUnitList.java</url>
+          <line>62</line>
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
