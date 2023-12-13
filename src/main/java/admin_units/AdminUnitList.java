@@ -7,13 +7,12 @@ import java.util.*;
 
 public class AdminUnitList {
     List<AdminUnit> units;
-    public AdminUnitList(List<AdminUnit> units){
-        this.units = units;
-    }
     public AdminUnitList(){
         this.units = new ArrayList<>();
     }
-
+    public AdminUnitList(List<AdminUnit> list){
+        this.units = new ArrayList<>(list);
+    }
     /**
      * Czyta rekordy pliku i dodaje do listy
      * @param filename nazwa pliku
@@ -29,8 +28,6 @@ public class AdminUnitList {
         while(csvReader.next()){
             BoundingBox box = new BoundingBox();
             for(int i = 7; i <16; i+=2){
-//                System.out.println(i);
-//                System.out.println(i+1);
                 box.addPoint(csvReader.getDouble(i), csvReader.getDouble(i+1));
             }
 
@@ -59,7 +56,7 @@ public class AdminUnitList {
 
         units.forEach(AdminUnit::fixMissingValues); //units = units.stream().peek().collect(Collectors.toList());
 
-        units.stream().filter(unit -> 0 == unit.density).forEach(System.out::println); // units.stream().filter(unit -> unit.parent == null).forEach(System.out::println);
+        // units.stream().filter(unit -> 0 == unit.density).forEach(System.out::println); // units.stream().filter(unit -> unit.parent == null).forEach(System.out::println);
 
         // dodawanie dzieci, przeszukujemy unitToParentIndex. wybieramy wszystkie klucze które jako wartość mają dany index.
         // dodajemy klucz (czyli nasz AdminUnit) do listy dzieci danego Unita.
@@ -85,15 +82,42 @@ public class AdminUnitList {
         list(System.out, 0, limit);
     }
     public AdminUnitList selectByName(String pattern, boolean regex) {
-        List<AdminUnit> units1 = units.stream()
-                .filter(unit -> {
-                    String u = unit.toString();
-                    return regex ? u.matches(pattern) : u.contains(pattern);
-                })
-                .toList();
-        return new AdminUnitList(units1);
+        /*AdminUnitList adminUnitList = new AdminUnitList();
+        adminUnitList.units.addAll(units.stream()
+                .filter(u -> regex ? u.name.matches(pattern) : u.name.contains(pattern))
+                .toList());
+
+
+         */
+        /*
+        for(AdminUnit unit : units){
+            String u = unit.name.toString();
+            if(regex){
+                if(u.matches(pattern)){
+                    adminUnitList.units.add(unit);
+                }
+            } else{
+                if(u.contains(pattern)){
+                    adminUnitList.units.add(unit);
+                }
+            }
+        }
+        */
+
+        //adminUnitList.list(System.out);
+
+        //return adminUnitList;
+
+        return new AdminUnitList(units.stream()
+                .filter(u -> regex ? u.name.matches(pattern) : u.name.contains(pattern))
+                .toList());
     }
     public AdminUnitList selectByName(String pattern) {
         return selectByName(pattern, false);
     }
+    AdminUnitList getNeighbors(AdminUnit unit, double maxdistance){
+        AdminUnitList adminUnitList = new AdminUnitList();
+        throw new RuntimeException("Not implemented");
+    }
+
 }
