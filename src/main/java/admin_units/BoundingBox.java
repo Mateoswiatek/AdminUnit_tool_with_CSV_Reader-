@@ -1,5 +1,7 @@
 package admin_units;
 
+import java.util.Locale;
+
 public class BoundingBox {
     double xmin;
     double ymin;
@@ -38,8 +40,13 @@ public class BoundingBox {
 
     // jeśli zawiera jeden z 4 punktów bb
     public boolean intersects(BoundingBox bb){
-        return contains(bb.xmin, bb.ymin) || contains(bb.xmax, bb.ymax)
-                || contains(bb.xmin, bb.ymax) || contains(bb.xmax, bb.ymin);
+        return !(xmin > bb.xmax || xmax < bb.xmin || ymin > bb.ymax || ymax < bb.ymin);
+        /* nie nachodzą gdy:
+        prawa krawedz xmin jest większa od lewej krawędzi drugiego
+        lub lewa krawedx xmax jest mniejsza od prawej krawedzi drugiego
+        lub dolna krawedz ymin jest wieksza od gornej krawedzi drugiego
+        lub gorna krawedz ymax jest mniejsza od dolnej krawedzi drugiego.
+         */
     }
     public BoundingBox add(BoundingBox bb){
         if(isEmpty()){
@@ -82,6 +89,17 @@ public class BoundingBox {
             throw new NullPointerException("Empty box");
         }
         return Haversine.haversine(getCenterX(), getCenterY(), bbx.getCenterX(), bbx.getCenterY());
+    }
+
+    public String getWKT(){
+        StringBuilder stringBuilder = new StringBuilder("POLYGON ((");
+
+        stringBuilder.append(xmin).append(" ").append(ymin).append(", ")
+                .append(xmin).append(" ").append(ymax).append(", ")
+                .append(xmax).append(" ").append(ymax).append(", ")
+                .append(xmax).append(" ").append(ymin).append(", ")
+                .append(xmin).append(" ").append(ymin).append("))");
+        return stringBuilder.toString();
     }
 
 
