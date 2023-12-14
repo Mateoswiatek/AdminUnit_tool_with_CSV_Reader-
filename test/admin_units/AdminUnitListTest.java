@@ -3,8 +3,6 @@ package admin_units;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class AdminUnitListTest {
     AdminUnitList adminUnitList = new AdminUnitList();
     @BeforeEach

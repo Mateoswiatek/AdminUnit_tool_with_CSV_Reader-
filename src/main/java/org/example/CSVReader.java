@@ -58,7 +58,6 @@ public class CSVReader {
      * @param replacing - czy Reader ma zamieniać brakujące pola (Wartości liczbowe) na zadaną wartość
      * @param default_number - Wartość na jaką będziemy zamieniać brakujące pola Liczbowe
      * @param default_string - Wartość na jaką będziemy zamieniać brakujące pola String.
-     * @throws IOException
      */
 
     public CSVReader(String filename, String delimiter, boolean hasHeader, boolean replacing, int default_number, String default_string) {
@@ -125,7 +124,6 @@ public class CSVReader {
     /**
      * Metoda zapisuje koeljną linię do current oraz dodaje ją do records
      * @return czy udało się odczytać
-     * @throws IOException
      */
     public boolean next() {
         try {
@@ -252,7 +250,6 @@ public class CSVReader {
     /**
      * Czas w domyślnym formacie
      * @return String
-     * @see timeFormatter
      */
     public String getTime(){
         return getTime(timeFormatter);
@@ -271,7 +268,6 @@ public class CSVReader {
     /**
      * Data w domyślnym formacie
      * @return String
-     * @see dataFormatter
      */
     public String getLocalDate(){
         return getLocalDate(dataFormatter);
@@ -289,7 +285,6 @@ public class CSVReader {
     /**
      * Data i Czas w domyślnym formacie
      * @return String
-     * @see dataTimeFormatter
      */
     public String getLocalDataTime(){
         return getLocalDataTime(dataTimeFormatter);
