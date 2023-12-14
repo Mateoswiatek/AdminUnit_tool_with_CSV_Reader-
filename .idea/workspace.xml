@@ -4,13 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b3d50278-b05d-4369-b60a-ff676b13668f" name="Changes" comment="add children to Unit and printing children.">
+    <list default="true" id="b3d50278-b05d-4369-b60a-ff676b13668f" name="Changes" comment="bugfix, finishing the project, README">
+      <change afterPath="$PROJECT_DIR$/src/main/java/admin_units/AdminUnitQuery.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/b/0ba1b9c7a4878802f938e331cc2d8a042087ec6b" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/b/0ba1b9c7a4878802f938e331cc2d8a042087ec6b" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/admin_units/AdminUnitList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/admin_units/AdminUnitList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/admin_units/BoundingBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/admin_units/BoundingBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/admin_units/AdminUnitListTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/admin_units/AdminUnitListTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,29 +55,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/mateusz/IdeaProjects/CSVReader_Lab6&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;/home/mateusz/IdeaProjects/CSVReader_Lab6/src/main/java/org/example/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "/home/mateusz/IdeaProjects/CSVReader_Lab6/src/main/java/admin_units",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "/home/mateusz/IdeaProjects/CSVReader_Lab6/src/main/java/org/example/Main.java",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/admin_units" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/main" />
@@ -92,21 +97,8 @@
       <recent name="org.example" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.AdminUnitListTest.read">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.Main" />
-      <module name="CSVReader_Lab6" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AdminUnitListTest.read" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.AdminUnitListTest.execute1">
+    <configuration name="AdminUnitListTest.execute" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CSVReader_Lab6" />
       <extension name="coverage">
         <pattern>
@@ -116,13 +108,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="admin_units" />
       <option name="MAIN_CLASS_NAME" value="admin_units.AdminUnitListTest" />
-      <option name="METHOD_NAME" value="read" />
+      <option name="METHOD_NAME" value="execute" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AdminUnitListTest.testList" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AdminUnitListTest.execute1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CSVReader_Lab6" />
       <extension name="coverage">
         <pattern>
@@ -132,13 +124,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="admin_units" />
       <option name="MAIN_CLASS_NAME" value="admin_units.AdminUnitListTest" />
-      <option name="METHOD_NAME" value="testList" />
+      <option name="METHOD_NAME" value="execute1" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AdminUnitListTest.testListLimit" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AdminUnitListTest.execute2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CSVReader_Lab6" />
       <extension name="coverage">
         <pattern>
@@ -148,23 +140,39 @@
       </extension>
       <option name="PACKAGE_NAME" value="admin_units" />
       <option name="MAIN_CLASS_NAME" value="admin_units.AdminUnitListTest" />
-      <option name="METHOD_NAME" value="testListLimit" />
+      <option name="METHOD_NAME" value="execute2" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CSVReaderTest.constructors" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AdminUnitListTest.execute3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CSVReader_Lab6" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.example.*" />
+          <option name="PATTERN" value="admin_units.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="org.example" />
-      <option name="MAIN_CLASS_NAME" value="org.example.CSVReaderTest" />
-      <option name="METHOD_NAME" value="constructors" />
+      <option name="PACKAGE_NAME" value="admin_units" />
+      <option name="MAIN_CLASS_NAME" value="admin_units.AdminUnitListTest" />
+      <option name="METHOD_NAME" value="execute3" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AdminUnitListTest.testFilter" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CSVReader_Lab6" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="admin_units.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="admin_units" />
+      <option name="MAIN_CLASS_NAME" value="admin_units.AdminUnitListTest" />
+      <option name="METHOD_NAME" value="testFilter" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -172,11 +180,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.AdminUnitListTest.read" />
-        <item itemvalue="JUnit.AdminUnitListTest.testListLimit" />
-        <item itemvalue="JUnit.AdminUnitListTest.testList" />
-        <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.CSVReaderTest.constructors" />
+        <item itemvalue="JUnit.AdminUnitListTest.execute1" />
+        <item itemvalue="JUnit.AdminUnitListTest.execute3" />
+        <item itemvalue="JUnit.AdminUnitListTest.execute2" />
+        <item itemvalue="JUnit.AdminUnitListTest.execute" />
+        <item itemvalue="JUnit.AdminUnitListTest.testFilter" />
       </list>
     </recent_temporary>
   </component>
@@ -197,7 +205,8 @@
       <workItem from="1701878114460" duration="4920000" />
       <workItem from="1702076840881" duration="42000" />
       <workItem from="1702463946418" duration="5015000" />
-      <workItem from="1702471541626" duration="11046000" />
+      <workItem from="1702471541626" duration="11081000" />
+      <workItem from="1702502014117" duration="16864000" />
     </task>
     <task id="LOCAL-00001" summary="CSV Reader">
       <option name="closed" value="true" />
@@ -279,7 +288,71 @@
       <option name="project" value="LOCAL" />
       <updated>1702479880246</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="BoundingBox add">
+      <option name="closed" value="true" />
+      <created>1702493645819</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1702493645819</updated>
+    </task>
+    <task id="LOCAL-00012" summary="optimalize equals">
+      <option name="closed" value="true" />
+      <created>1702502182476</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1702502182476</updated>
+    </task>
+    <task id="LOCAL-00013" summary="new BoundingBox init in AdminUnitList">
+      <option name="closed" value="true" />
+      <created>1702502963789</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1702502963789</updated>
+    </task>
+    <task id="LOCAL-00014" summary="fast selectByName">
+      <option name="closed" value="true" />
+      <created>1702507933941</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1702507933941</updated>
+    </task>
+    <task id="LOCAL-00015" summary="simple getNeighbors">
+      <option name="closed" value="true" />
+      <created>1702510700041</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1702510700041</updated>
+    </task>
+    <task id="LOCAL-00016" summary="bugfix intersects">
+      <option name="closed" value="true" />
+      <created>1702513238482</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1702513238482</updated>
+    </task>
+    <task id="LOCAL-00017" summary="bugfix, finishing the project, README">
+      <option name="closed" value="true" />
+      <created>1702515296839</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1702515296839</updated>
+    </task>
+    <task id="LOCAL-00018" summary="bugfix, finishing the project, README">
+      <option name="closed" value="true" />
+      <created>1702515416749</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1702515416749</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -294,7 +367,14 @@
     <MESSAGE value="fixMissingValues and bugfix parent&#10;(first set all parents, after fixMissingValues)" />
     <MESSAGE value="redundant streams replaced by regular forEach" />
     <MESSAGE value="add children to Unit and printing children." />
-    <option name="LAST_COMMIT_MESSAGE" value="add children to Unit and printing children." />
+    <MESSAGE value="BoundingBox add" />
+    <MESSAGE value="optimalize equals" />
+    <MESSAGE value="new BoundingBox init in AdminUnitList" />
+    <MESSAGE value="fast selectByName" />
+    <MESSAGE value="simple getNeighbors" />
+    <MESSAGE value="bugfix intersects" />
+    <MESSAGE value="bugfix, finishing the project, README" />
+    <option name="LAST_COMMIT_MESSAGE" value="bugfix, finishing the project, README" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

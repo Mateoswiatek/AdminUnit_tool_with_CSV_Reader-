@@ -4,6 +4,7 @@ import org.example.CSVReader;
 
 import java.io.PrintStream;
 import java.util.*;
+import java.util.function.Predicate;
 
 public class AdminUnitList {
     List<AdminUnit> units;
@@ -11,8 +12,9 @@ public class AdminUnitList {
         this.units = new ArrayList<>();
     }
     public AdminUnitList(List<AdminUnit> list){
-        this.units = list;
-        //this.units = new ArrayList<>(list); // meaby ???
+        //TODO sprawdzić czy to zakomendowane się sprawdzi
+        //this.units = list; // czy na pewno to jest poprawnie??
+        this.units = new ArrayList<>(list); // meaby ???
     }
 
     public void read(String filename) {
@@ -137,5 +139,61 @@ public class AdminUnitList {
                     .filter(u -> u.bbox.distanceTo(unit.bbox) < maxdistance && u.bbox.distanceTo(unit.bbox) != 0.0)
                     .toList();
         });
+    }
+
+    public AdminUnitList sortInplaceByName(){
+        /*
+        units.sort(new Comparator<AdminUnit>() {
+            @Override
+            public int compare(AdminUnit o1, AdminUnit o2) {
+                return o1.name.compareToIgnoreCase(o2.name);
+            }
+        });
+        return this;
+        */
+
+        units.sort((o1, o2) -> o1.name.compareToIgnoreCase(o2.name));
+        return this;
+    }
+    public AdminUnitList sortInplaceByArea(){
+        /*
+        units.sort((o1, o2) -> {
+            if(o1.area == o2.area) return 0;
+            return o1.area < o2.area ? -1 : 1;
+        });
+        return this;
+        */
+        units.sort(Comparator.comparingDouble(unit -> unit.area));
+        return this;
+    }
+
+    public AdminUnitList sortInplaceByPopulation(){
+        units.sort(Comparator.comparingDouble(unit -> unit.population));
+        return this;
+    }
+    public AdminUnitList sortInplace(Comparator<AdminUnit> cmp){
+        units.sort(cmp);
+        return this;
+    }
+
+    public AdminUnitList sort(Comparator<AdminUnit> cmp){
+        // Tworzy wyjściową listę
+        // Kopiuje wszystkie jednostki
+        // woła sortInPlace
+        return new AdminUnitList(units).sortInplace(cmp);
+    }
+
+    AdminUnitList filter(Predicate<AdminUnit> pred) {
+        return new AdminUnitList(units.stream().filter(pred).toList());
+
+    }
+
+    // Nie wiem czy tak może być ;) działa ? działa, z pewnością mało miejsca zajmuje.
+    AdminUnitList filter(Predicate<AdminUnit> pred, int limit){
+        return new AdminUnitList(units.stream().filter(pred).limit(limit).toList());
+    }
+
+    AdminUnitList filter(Predicate<AdminUnit> pred, int offset, int limit){
+        return new AdminUnitList(units.stream().filter(pred).skip(offset).limit(limit).toList());
     }
 }
