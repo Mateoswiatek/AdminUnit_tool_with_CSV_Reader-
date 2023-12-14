@@ -1,7 +1,5 @@
 package admin_units;
 
-import java.util.Locale;
-
 public class BoundingBox {
     double xmin;
     double ymin;
@@ -38,14 +36,21 @@ public class BoundingBox {
         return (xmin < x && x < xmax) && (ymin < y && y < ymax);
     }
 
-    // jeśli zawiera jeden z 4 punktów bb
     public boolean intersects(BoundingBox bb){
         return !(xmin > bb.xmax || xmax < bb.xmin || ymin > bb.ymax || ymax < bb.ymin);
-        /* nie nachodzą gdy:
+        /* bierzemy wszystkie kiedy nie nachodzą i negeujemy.
+        nie nachodzą się prostokąty gdy:
         prawa krawedz xmin jest większa od lewej krawędzi drugiego
         lub lewa krawedx xmax jest mniejsza od prawej krawedzi drugiego
         lub dolna krawedz ymin jest wieksza od gornej krawedzi drugiego
         lub gorna krawedz ymax jest mniejsza od dolnej krawedzi drugiego.
+         */
+        /* we take all of them if they do not overlap and negate them.
+        rectangles do not overlap when:
+        the right edge of xmin is larger than the left edge of the other
+        or the left edge of xmax is smaller than the right edge of the other
+        or the lower edge of ymin is larger than the upper edge of the other
+        or the upper edge of ymax is smaller than the lower edge of the other.
          */
     }
     public BoundingBox add(BoundingBox bb){
@@ -115,7 +120,7 @@ public class BoundingBox {
 }
 
 
-// Java program for the haversine formula
+// Program that calculates the Haversine formula
 // https://www.geeksforgeeks.org/haversine-formula-to-find-distance-between-two-points-on-a-sphere/
 class Haversine {
 

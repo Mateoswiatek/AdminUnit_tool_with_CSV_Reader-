@@ -53,12 +53,21 @@ class AdminUnitListTest {
     }
 
     @Test
-    void testGetNeighbors(){
+    void testGetNeighborsCity(){
         //wyznaczyć i wypisać listę sąsiadów ->
         // dla Kolonia Wschodnia -> Kolonia Wschodnia, Kolonia Zachodnia, Kolonia Południowa
 
         //adminUnitList.getNeighbors(adminUnitList.selectByName("Bębło").units.get(0), 150000);
         adminUnitList.getNeighbors(adminUnitList.selectByName("Kolonia Wschodnia").units.get(0), 150000).list(System.out);
+    }
+    @Test
+    void testGetNeighborsDistrict(){
+        //adminUnitList.selectByName("województwo lubuskie", false).list(System.out);
+        //adminUnitList.selectByName("województwo zachodniopomorskie", false).list(System.out);
+
+        //wyznaczyć i wypisać listę sąsiadów ->zachodniopomorskie -> województwo lubuskie, województwo wielkopolskie, województwo pomorskie.
+        //adminUnitList.selectByName("województwo zachodniopomorskie").list(System.out);
+        adminUnitList.getNeighbors(adminUnitList.selectByName("województwo zachodniopomorskie").units.get(0), 150000).list(System.out);
     }
 
 }

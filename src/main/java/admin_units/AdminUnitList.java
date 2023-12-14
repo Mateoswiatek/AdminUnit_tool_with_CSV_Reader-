@@ -4,7 +4,6 @@ import org.example.CSVReader;
 
 import java.io.PrintStream;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class AdminUnitList {
     List<AdminUnit> units;
@@ -13,12 +12,8 @@ public class AdminUnitList {
     }
     public AdminUnitList(List<AdminUnit> list){
         this.units = list;
-        //this.units = new ArrayList<>(list); // można ???
+        //this.units = new ArrayList<>(list); // meaby ???
     }
-    /**
-     * Czyta rekordy pliku i dodaje do listy
-     * @param filename nazwa pliku
-     */
 
     public void read(String filename) {
         CSVReader csvReader = new CSVReader(filename, ",");
@@ -51,17 +46,28 @@ public class AdminUnitList {
         // dodajemy rówineż listę zapisującą <id, wojewodztwo>,
         // następnie dla każdego unitu bierzemy index jego rodzica, i szukamy unita do którego ten index jest przypisany.
         // nie bierzemy tych którzy nie mają rodziców.
+        /*
+        // mapping <West Pomeranian Voivodeship, 2>; we combine West Pomerania with 2. that unit with inexie 2 is the parent of West Pomerania
+        // we also add a list recording <id, voivodeship>,
+        // then for each unit we take the index of its parent, and look for the unit to which this index is assigned.
+        // we don't take those who don't have parents.
+         */
 
         units.forEach(unit -> unit.parent = indexToUnit.get(unitToParentIndex.get(unit))); // old version units = units.stream().peek(unit -> unit.parent = indexToUnit.get(unitToParentIndex.get(unit))).collect(Collectors.toList());
-        // Na dwa, bo najpierw wszyscy rodzice muszą być uzupełnieni, a dopiero potem mozna fixowac
-        // for each unit fix population and desity
+        // In two forEach, because first all parents must be completed, and only then can they be fixed
 
+        // for each unit fix population and desity
         units.forEach(AdminUnit::fixMissingValues); //units = units.stream().peek().collect(Collectors.toList());
 
-        // units.stream().filter(unit -> 0 == unit.density).forEach(System.out::println); // units.stream().filter(unit -> unit.parent == null).forEach(System.out::println);
+        // units.stream().filter(unit -> 0 == unit.density).forEach(System.out::println);
+        // units.stream().filter(unit -> unit.parent == null).forEach(System.out::println);
 
         // dodawanie dzieci, przeszukujemy unitToParentIndex. wybieramy wszystkie klucze które jako wartość mają dany index.
         // dodajemy klucz (czyli nasz AdminUnit) do listy dzieci danego Unita.
+        /*
+        // adding children, we search unitToParentIndex. we select all keys that have a given index as a value.
+        // we add the key (i.e. our AdminUnit) to the list of children of a given Unit.
+         */
         units.forEach(unit -> {
             for (Map.Entry<AdminUnit, Long> entry : unitToParentIndex.entrySet()) {
                 if (entry.getValue().equals(unit.id)) {
@@ -85,6 +91,7 @@ public class AdminUnitList {
     }
     public AdminUnitList selectByName(String pattern, boolean regex) {
         /*
+        AdminUnitList adminUnitList = new AdminUnitList;
         for(AdminUnit unit : units){
             String u = unit.name.toString();
             if(regex){
@@ -97,6 +104,7 @@ public class AdminUnitList {
                 }
             }
         }
+        return adminUnitList;
         */
 
         return new AdminUnitList(units.stream()
@@ -107,18 +115,27 @@ public class AdminUnitList {
         return selectByName(pattern, true);
     }
 
+    // zaimplementowane jako drzewa -> pierwsza myśl, nie wyobrażałem zrobić tego brute force
+    // implemented as trees -> first thought, I couldn't imagine doing it by brute force
     AdminUnitList getNeighbors(AdminUnit unit, double maxdistance){
+        // przeszukujemy tylko po tych którzy nie mają rodzica -> czyli województwa wzajemnie.
+        // we search only for those who do not have a parent -> i.e. each province.
+        if(null == unit.parent){
+            return new AdminUnitList(units.stream()
+                    .filter(u -> u.parent == null && u.bbox.intersects(unit.bbox) && u.bbox.distanceTo(unit.bbox) != 0.0)
+                    .toList()
+            );
+        }
 
-        // 4 województw, 6 powiatów i 7 gmin
+        // 4 województwa, 6 powiaty i 7 gminy
         return new AdminUnitList(switch(unit.adminLevel){
             case 4, 6, 7 -> unit.parent.children.stream()
-                    .filter(u -> u.bbox.intersects(unit.parent.bbox)).collect(Collectors.toList());
+                    .filter(u -> u.bbox.intersects(unit.bbox)).toList();
             default -> unit.parent.children.stream()
-                    .filter(u -> {
-                        System.out.println(u.bbox.distanceTo(unit.bbox));
-                        return u.bbox.distanceTo(unit.bbox) < maxdistance && u.bbox.distanceTo(unit.bbox) != 0.0;
-                    }).collect(Collectors.toList());
+                    // w takiej kolejności, bo u.bbox.distanceTo(unit.bbox) będzie równe 0.0 tylko w jednym przypadku. druga część wykona się dla każdego z sąsiadów + 1 czyli ten konkretny.
+                    // in this order, because u.bbox.distance(unit.bbox) will be equal to 0.0 only in one case. the second part will be executed for each of the neighbors + 1, i.e. this specific one.
+                    .filter(u -> u.bbox.distanceTo(unit.bbox) < maxdistance && u.bbox.distanceTo(unit.bbox) != 0.0)
+                    .toList();
         });
     }
-
 }

@@ -13,7 +13,7 @@ public class AdminUnit {
     AdminUnit parent;
     List<AdminUnit> children = new ArrayList<>();
     BoundingBox bbox;
-
+    // Writing "children" is recommended here to avoid spam by voivodeship
     @Override
     public String toString() {
         String parentId;
@@ -28,10 +28,10 @@ public class AdminUnit {
                 "\n population=" + population +
                 "\n area=" + area +
                 "\n density=" + density +
-                "\n bbox=" + bbox +
+                "\n bbox=" + bbox.getWKT() +
                 "\n this   id= " + id +
                 "\n parent id= " + parentId +
-                "\n childrens = " + children.toString() +
+//                "\n childrens = " + children.toString() +
                 "}\n\n\n";
     }
 
